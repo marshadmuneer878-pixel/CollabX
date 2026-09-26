@@ -17,5 +17,5 @@ function loginUser() {
 
   localStorage.setItem("collabxCurrentUser", JSON.stringify({ name: match.name, email: match.email }));
   alert(`Welcome back, ${match.name}!`);
-  window.location.href = "home.html";
+  window.location.href = "index.html";
 }
