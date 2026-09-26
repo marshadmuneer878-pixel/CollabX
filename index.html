@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CollabX</title>
+
+    <link rel="stylesheet" href="home.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- place right after <body> opens -->
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+    <aside id="profileSidebar" class="profile-sidebar">
+        <span class="sidebar-close" onclick="closeSidebar()">&times;</span>
+
+        <div class="sidebar-profile">
+            <div class="profile-pic-placeholder" id="sidebarProfilePic"
+                 onclick="document.getElementById('profilePicInput').click()">
+                <span>+</span>
+            </div>
+            <input type="file" id="profilePicInput" accept="image/*"
+                   style="display:none" onchange="previewProfilePic(event)">
+
+            <h3 id="sidebarUserName">Your Name</h3>
+            <p id="sidebarUserEmail">your@email.com</p>
+        </div>
+
+        <div class="sidebar-details">
+            <h4>Skills</h4>
+            <p id="sidebarUserSkills">-</p>
+
+            <h4>Looking For</h4>
+            <p id="sidebarLookingFor">-</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="about.html">About</a>
+            <a href="collaborators.html">Collaborators</a>
+            <a href="skill.html">Skills</a>
+            <a href="campus.html">For Students</a>
+        </nav>
+    </aside>
+
+    <header class="home">
+
+        <div class="sec5">
+            <button class="menu-btn" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="logo-text">
+                <h1>CollabX</h1>
+                <p>CONNECT. COLLABORATE. CREATE.</p>
+            </div>
+
+            <img src="images/1000302600-removebg-preview.png" alt="CollabX Logo">
+        </div>
+
+        <nav class="center">
+            <a href="login.html">Login</a>
+            <a href="index.html">Home</a>
+            <a href="skill.html">Skills</a>
+            <a href="campus.html">For Students</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <div class="sec6">
+
+        <h2>
+            Turn Your Skills into
+            <span>collaboration</span>
+        </h2>
+
+        <p>
+            Find people with the
+            <span>skills</span> you need,
+            <span>share</span> what you know,
+            and build something amazing
+            <span>together.</span>
+        </p>
+
+    </div>
+
+
+    <!-- ================= MAIN CARDS ================= -->
+
+    <div class="card-container">
+
+        <div class="cards">
+
+            <!-- CREATE PROFILE CARD -->
+
+            <div class="card1">
+
+                <h2>Start Your Collaboration</h2>
+
+                <p>
+                    Create your CollabX profile, showcase your skills,
+                    and tell others what you are looking for.
+                    <br>
+                    Connect with people who can help turn your ideas
+                    into real projects.
+                </p>
+
+                <button onclick="openProfile()">
+                    Create Your Profile
+                </button>
+
+            </div>
+
+
+            <!-- EXPLORE SKILLS CARD -->
+
+            <div class="card1">
+
+                <h2>Discover New Skills</h2>
+
+                <p>
+                    Explore a variety of skills offered by the
+                    CollabX community.
+                    <br>
+                    Find people with the knowledge you need and
+                    discover opportunities to learn, share, and collaborate.
+                </p>
+
+                <button onclick="openSkills()">
+                    Explore More
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= EXPLORE SKILLS POPUP ================= -->
+
+    <div id="skillsPopup" class="popup">
+
+        <div class="skills-box">
+
+            <span class="close-btn" onclick="closeSkills()">
+                &times;
+            </span>
+
+            <h2>Explore Skills</h2>
+
+            <p>
+                Discover different skills available in the
+                CollabX community.
+            </p>
+
+            <div class="skills-list">
+
+                <div class="skill-item">
+                    <h3>💻 Web Development</h3>
+                    <p>HTML, CSS, JavaScript, React</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>🎨 UI/UX Design</h3>
+                    <p>Figma, Wireframing, Prototyping</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>🐍 Python</h3>
+                    <p>Python programming, automation and projects</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>🤖 AI & ML</h3>
+                    <p>Machine Learning, AI and Data Science</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>📸 Photography</h3>
+                    <p>Portrait, landscape and creative photography</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>🎬 Video Editing</h3>
+                    <p>Video editing, effects and content creation</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>📱 App Development</h3>
+                    <p>Android, Flutter and mobile applications</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>✍️ Content Writing</h3>
+                    <p>Blogging, copywriting and creative writing</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CREATE PROFILE POPUP ================= -->
+
+    <div id="profilePopup" class="popup">
+
+        <div class="profile-box">
+
+            <span class="close-btn" onclick="closeProfile()">
+                &times;
+            </span>
+
+            <h2>Create Your Profile</h2>
+
+            <p>
+                Tell the CollabX community about yourself.
+            </p>
+
+            <form id="profileForm">
+
+                <label for="profileName">Name</label>
+                <input type="text" id="profileName" name="name"
+                    placeholder="Enter your name" required>
+
+                <label for="profileEmail">Email</label>
+                <input type="email" id="profileEmail" name="email"
+                    placeholder="Enter your email" required>
+
+                <label for="profilePassword">Password</label>
+                <input type="password" id="profilePassword" name="password"
+                    placeholder="Create a password" required minlength="8"
+                    pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
+                    title="At least 8 characters, including 1 uppercase, 1 lowercase and 1 number">
+                <small class="password-hint">Min 8 characters, with at least 1 uppercase, 1 lowercase and 1 number.</small>
+
+                <label for="profileSkills">Your Skills</label>
+                <input type="text" id="profileSkills" name="skills"
+                    placeholder="Eg: Python, Web Development">
+
+                <label for="profileLookingFor">What are you looking for?</label>
+                <textarea id="profileLookingFor" name="lookingFor"
+                    placeholder="Tell us what you want to learn or collaborate on"></textarea>
+
+                <button type="submit">
+                    Create Profile
+                </button>
+
+                <a href="login.html" class="secondary-link-btn">
+                    Login
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SKILLS / FIND COLLABORATORS ================= -->
+
+    <div class="sec7" id="skills">
+
+        <div class="finding">
+            <h2>What Are You Looking For?</h2>
+            <p>Choose a skill and find people who can help you learn, build and collaborate.</p>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="card2" onclick="openskill('Web Development')">
+                <h2>💻 WEB DEVELOPMENT</h2>
+            </div>
+
+            <div class="card2" onclick="openskill('UI/UX Design')">
+                <h2>🎨 UI/UX DESIGN</h2>
+            </div>
+
+            <div class="card2" onclick="openskill('Python')">
+                <h2>🐍 PYTHON</h2>
+            </div>
+
+            <div class="card2" onclick="openskill('AI & ML')">
+                <h2>🤖 AI & ML</h2>
+            </div>
+
+            <div class="card2" onclick="openskill('Photography')">
+                <h2>📸 PHOTOGRAPHY</h2>
+            </div>
+
+            <div class="card2" onclick="openskill('Video Editing')">
+                <h2>🎬 VIDEO EDITING</h2>
+            </div>
+
+            <div class="find-collaborator">
+                <p>Wanna find collaborators? Just click here</p>
+                <button onclick="findCollaborator()">Find Collaborators</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SKILL POPUP ================= -->
+
+    <div id="skill1Popup" class="skill1-popup">
+
+        <div class="skill1-popup-box">
+
+            <span class="skill1-close" onclick="closeskill()">&times;</span>
+
+            <div id="skill1Icon" class="skill1-icon"></div>
+
+            <h2 id="skill1Title">Skill Name</h2>
+
+            <p id="skill1Description">
+                Skill description will appear here.
+            </p>
+
+            <div class="skill1-buttons">
+
+                <button class="find-btn" onclick="findCollaborator()">
+                    Find Collaborators
+                </button>
+
+                <button class="post-btn" onclick="postSkill()">
+                    Post About Your Skills
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= HOW COLLABX WORKS ================= -->
+
+    <div class="sec8">
+
+        <h2>HOW COLLABX WORKS?</h2>
+
+        <div class="sec8-1">
+
+            <!-- STEP 1 -->
+            <div class="card3">
+                <h2>Create your Profile</h2>
+                <p>
+                    Create your CollabX profile, showcase your skills,
+                    and tell others what you are looking for.
+                    <br>
+                    Connect with people who can help turn your ideas
+                    into real projects.
+                </p>
+                <button onclick="openProfile()">
+                    Create
+                </button>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="card3">
+                <h2>Connect</h2>
+                <p>
+                    Explore a variety of skills offered by the
+                    CollabX community.
+                    <br>
+                    Find people with the knowledge you need and
+                    discover opportunities to learn, share, and collaborate.
+                </p>
+                <button onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})">
+                    Connect
+                </button>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="card3">
+                <h2>Collaborate</h2>
+                <p>
+                    Work together and bring your project to life.
+                </p>
+                <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+                    Collab
+                </button>
+            </div>
+
+            <!-- LEARN MORE -->
+            <p class="learn-more-line">
+                If you want to Learn More Click
+                <button onclick="window.location.href='about.html'">
+                    Learn More
+                </button>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FEATURED PROJECTS ================= -->
+
+    <section class="sec9" id="projects">
+
+        <div class="featured-heading">
+            <p class="section-tag">COLLABX COMMUNITY WORK</p>
+            <h2>Featured Projects</h2>
+            <p>
+                A few examples of ideas brought to life when people shared skills,
+                learned together, and collaborated through CollabX.
+            </p>
+        </div>
+
+        <div class="featured-projects">
+
+            <!-- AI CHATBOT -->
+            <article class="featured-project-card">
+                <div class="project-icon">🤖</div>
+
+                <div class="project-content">
+                    <span class="project-label">FEATURED COLLABORATION</span>
+                    <h3>AI Chatbot</h3>
+
+                    <p class="project-description">
+                        An intelligent chatbot designed to answer common user questions,
+                        guide visitors through a website, and provide quick support at any
+                        time. The team combined programming, AI knowledge, and interface
+                        design to turn a simple idea into a helpful digital assistant.
+                    </p>
+
+                    <div class="project-details">
+                        <div>
+                            <span>Created by</span>
+                            <strong>Marshad</strong>
+                        </div>
+                        <div>
+                            <span>CollabX collaborators</span>
+                            <strong>5 people</strong>
+                        </div>
+                        <div>
+                            <span>Skills used</span>
+                            <strong>Python, AI & ML, UI/UX, Web Development</strong>
+                        </div>
+                    </div>
+
+                    <p class="project-outcome">
+                        <b>Outcome:</b> The team created a working chatbot prototype with
+                        a clean chat interface, basic question answering, and a knowledge
+                        base that can be expanded for a real business or student project.
+                    </p>
+                    <a href="#" class="see-project-btn">See Project →</a>
+                </div>
+            </article>
+
+            <!-- PORTFOLIO -->
+            <article class="featured-project-card">
+                <div class="project-icon">💼</div>
+
+                <div class="project-content">
+                    <span class="project-label">FEATURED COLLABORATION</span>
+                    <h3>Portfolio</h3>
+
+                    <p class="project-description">
+                        A modern personal portfolio website built to showcase creative work,
+                        technical skills, and completed projects in one professional online
+                        space. The collaborators focused on making the site responsive,
+                        visually engaging, and easy for recruiters or clients to explore.
+                    </p>
+
+                    <div class="project-details">
+                        <div>
+                            <span>Created by</span>
+                            <strong>Muhammed</strong>
+                        </div>
+                        <div>
+                            <span>CollabX collaborators</span>
+                            <strong>3 people</strong>
+                        </div>
+                        <div>
+                            <span>Skills used</span>
+                            <strong>HTML, CSS, JavaScript, UI/UX Design</strong>
+                        </div>
+                    </div>
+
+                    <p class="project-outcome">
+                        <b>Outcome:</b> The final portfolio included an introduction,
+                        skill highlights, project showcase, contact area, and responsive
+                        design that works smoothly on mobile and desktop screens.
+                    </p>
+                    <a href="#" class="see-project-btn">See Project →</a>
+                </div>
+            </article>
+
+            <!-- MOBILE APP -->
+            <article class="featured-project-card">
+                <div class="project-icon">📱</div>
+
+                <div class="project-content">
+                    <span class="project-label">FEATURED COLLABORATION</span>
+                    <h3>Mobile App</h3>
+
+                    <p class="project-description">
+                        A productivity mobile app concept created to help students organize
+                        tasks, set reminders, and track their daily goals. The project
+                        brought together people with design, development, and planning
+                        skills to shape the idea from early sketches into an app prototype.
+                    </p>
+
+                    <div class="project-details">
+                        <div>
+                            <span>Created by</span>
+                            <strong>Imthiyaz</strong>
+                        </div>
+                        <div>
+                            <span>CollabX collaborators</span>
+                            <strong>6 people</strong>
+                        </div>
+                        <div>
+                            <span>Skills used</span>
+                            <strong>App Development, UI/UX, JavaScript, Project Planning</strong>
+                        </div>
+                    </div>
+
+                    <p class="project-outcome">
+                        <b>Outcome:</b> The collaboration produced a clickable mobile app
+                        prototype with task lists, reminders, goal tracking, and a simple,
+                        student-friendly interface ready for further development.
+                    </p>
+                    <a href="#" class="see-project-btn">See Project →</a>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= WHY CHOOSE COLLABX ================= -->
+
+    <div class="sec10">
+
+        <div class="why-title">
+            <h2>WHY CHOOSE <span>COLLABX?</span></h2>
+            <p>Everything you need to turn ideas into meaningful collaborations.</p>
+        </div>
+
+        <div class="why-container">
+
+            <div class="why-card">
+                <div class="why-icon">🤝</div>
+                <h3>Easy Collaboration</h3>
+                <p>
+                    Find the right people and work together easily
+                    on projects that match your interests and skills.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">💡</div>
+                <h3>Share Ideas</h3>
+                <p>
+                    Share your knowledge, exchange creative ideas,
+                    and learn something new from others.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">🌎</div>
+                <h3>Meet New People</h3>
+                <p>
+                    Connect with people who have different skills,
+                    interests, and ideas.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">🚀</div>
+                <h3>Build Real Projects</h3>
+                <p>
+                    Turn your ideas into real projects by collaborating
+                    with talented people.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FINAL CALL TO ACTION ================= -->
+
+    <div class="sec11">
+
+        <div class="cta-content">
+
+            <h2>Have a Skill? Have an Idea?</h2>
+
+            <p>
+                Don't build alone. Find the right people, share your skills,
+                and start creating something amazing with CollabX.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="login.html">
+                    <button class="cta-primary" type="button">
+                        🚀 Get Started
+                    </button>
+                </a>
+
+                <button class="cta-secondary" onclick="openSkills()">
+                    🔍 Explore Skills
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="home-footer">
+
+        <div class="footer-main">
+
+            <!-- FOOTER BRAND -->
+            <div class="footer-brand">
+                <h2>CollabX</h2>
+                <p>CONNECT. COLLABORATE. CREATE.</p>
+                <span>Turn your skills into meaningful collaborations.</span>
+            </div>
+
+            <!-- QUICK LINKS -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="login.html">Login</a>
+            </div>
+
+            <!-- CONNECT -->
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <a href="#">📧 Email</a>
+                <a href="#">📸 Instagram</a>
+                <a href="#">💻 GitHub</a>
+            </div>
+
+            <!-- WHAT WE OFFER -->
+            <div class="footer-section">
+                <h3>What We Offer</h3>
+                <p>🤝 Skill Exchange</p>
+                <p>💡 Collaboration</p>
+                <p>📚 Learning</p>
+            </div>
+
+        </div>
+
+        <!-- FOOTER BOTTOM -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 CollabX. All Rights Reserved.</p>
+            <p>CONNECT. COLLABORATE. CREATE.</p>
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="home.js"></script>
+
+</body>
+
+</html>
