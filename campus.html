@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Network | COLLABX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="campus.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="home.html" class="logo">COLLAB<span>X</span></a>
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="collaborators.html">Collaborators</a>
+      <a href="campus.html" class="active">Campus</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="campus-hero">
+    <div class="id-card">
+      <div class="id-strip"></div>
+      <div class="id-body">
+        <div class="id-avatar">CX</div>
+        <div class="id-info">
+          <p class="id-label">STUDENT ACCESS</p>
+          <h3 id="idName">Your Name Here</h3>
+          <p id="idUni" class="id-uni">Not verified yet</p>
+        </div>
+        <span class="id-badge" id="idBadge">🔒 Locked</span>
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <span class="eyebrow">🎓 Campus Network — Exclusive</span>
+      <h1>Built for students who ship things.</h1>
+      <p>Verify your .edu email to unlock campus-only teammates, hackathon squads, and mentors from your own university.</p>
+      <button class="btn-primary" id="verifyBtn" onclick="openVerifyModal()">Verify with .edu email</button>
+    </div>
+  </header>
+
+  <!-- VERIFY MODAL -->
+  <div class="modal-overlay" id="verifyModal">
+    <div class="modal">
+      <h3>Verify your student status</h3>
+      <p>Enter your university email. (Mock check for now — any address ending in <b>.edu</b> works.)</p>
+      <form id="verifyForm">
+        <input type="email" id="eduEmail" placeholder="you@university.edu" required>
+        <p class="error-text" id="verifyError"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn-ghost" onclick="closeVerifyModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Unlock Access</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <section class="filters-section">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search students, skills, or universities...">
+    </div>
+    <div class="chip-row" id="uniChips">
+      <button class="chip active" data-uni="all">All Universities</button>
+    </div>
+    <div class="chip-row" id="skillChips">
+      <button class="chip active" data-skill="all">All Skills</button>
+    </div>
+  </section>
+
+  <!-- HACKATHON STRIP -->
+  <section class="hackathon-section">
+    <div class="section-heading">
+      <h2>🔥 Looking for a team</h2>
+      <p>Live requests from students hunting teammates for events & projects</p>
+    </div>
+    <div class="hackathon-scroll" id="hackathonList"></div>
+  </section>
+
+  <!-- STUDENT GRID -->
+  <section class="students-section">
+    <div class="section-heading">
+      <h2>Campus Collaborators</h2>
+      <p id="resultCount">Showing all verified students</p>
+    </div>
+    <div class="student-grid" id="studentGrid"></div>
+  </section>
+
+  <!-- MENTOR CTA -->
+  <section class="mentor-cta">
+    <div class="mentor-text">
+      <h2>Stuck on a project? Get matched with a mentor.</h2>
+      <p>Alumni and senior builders on COLLABX volunteer time to guide student projects.</p>
+    </div>
+    <button class="btn-primary" onclick="requestMentor()">Request a Mentor</button>
+  </section>
+
+  <!-- CONNECT CONFIRMATION POPUP -->
+  <div class="popup" id="connectPopup">
+    <p id="popupText">Request sent!</p>
+  </div>
+
+  <script src="campus.js"></script>
+</body>
+</html>

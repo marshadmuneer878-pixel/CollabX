@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollabX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- BODY ---------- */
+
+body{
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            #bfdbfe 0%,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            #c4b5fd 0%,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fbff,
+            #dbeafe 45%,
+            #ede9fe
+        );
+
+    color: #1e293b;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ---------- HEADER ---------- */
+
+.home{
+    min-height: 100px;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sec5{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+.sec5 h1{
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    font-weight: 800;
+
+    background: linear-gradient(
+        90deg,
+        #618aeb,
+        #5a1ec2
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: fadeRight 1s ease;
+}
+
+.sec5 img{
+    width: 85px;
+    height: 75px;
+    object-fit: contain;
+    animation: fadeRight 1.2s ease;
+}
+
+.sec5 p{
+    position: absolute;
+    top: 65px;
+    left: 5px;
+
+    margin: 0;
+    white-space: nowrap;
+
+    color: #010c1c;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+
+/* ---------- NAVIGATION ---------- */
+
+.center{
+    display: flex;
+    gap: 25px;
+}
+
+.center a{
+    text-decoration: none;
+    color: #1e293b;
+    font-size: 17px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.center a:hover{
+    color: #7c3aed;
+    transform: translateY(-3px);
+}
+
+
+/* ---------- LOGIN SECTION ---------- */
+
+.credentials{
+    width: 420px;
+    max-width: 90%;
+    margin: 80px auto 0;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px rgba(15,23,42,0.20);
+
+    animation: fadeUp 1s ease;
+}
+
+
+/* ---------- LOGIN HEADING ---------- */
+
+.credentials h2{
+    margin: 0 0 10px;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.word1{
+    margin: 0 0 30px;
+
+    color: #475569;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* ---------- LABELS ---------- */
+
+.credentials label{
+    display: block;
+    text-align: left;
+
+    margin: 12px 0 6px;
+
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* ---------- INPUTS ---------- */
+
+.login{
+    width: 100%;
+    height: 45px;
+
+    padding: 0 15px;
+
+    box-sizing: border-box;
+
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.8);
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+.login:focus{
+    border-color: #7c3aed;
+
+    box-shadow:
+        0 0 0 4px rgba(124,58,237,0.12);
+
+    background: white;
+}
+
+
+/* ---------- LOGIN BUTTON ---------- */
+
+.credentials button{
+    width: 100%;
+    height: 45px;
+
+    margin-top: 15px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.credentials button:hover{
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(37,99,235,0.3);
+}
+
+
+/* ---------- ABOUT MESSAGE ---------- */
+
+.more{
+    margin-top: 25px;
+
+    text-align: center;
+
+    color: #111111;
+    font-size: 14px;
+    font-style: normal;
+}
+
+.more a{
+    color: #05010b;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.more a:hover{
+    text-decoration: underline;
+}
+
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeRight{
+    from{
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.foter{
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #172554,
+        #1e1b4b
+    );
+
+    color: white;
+
+    padding: 20px 35px 12px;
+    margin-top: 30px;
+}
+
+.cx{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.cx h2{
+    margin: 0;
+    font-size: 28px;
+
+    background: linear-gradient(
+        90deg,
+        #60a5fa,
+        #a78bfa
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cx p{
+    margin: 3px 0;
+    color: #cbd5e1;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+
+    border-top: 1px solid rgba(255,255,255,0.15);
+
+    padding-top: 15px;
+}
+
+.sec4{
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sec4 h3{
+    color: #a78bfa;
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+
+.sec4 a{
+    text-decoration: none;
+    color: #e2e8f0;
+    transition: 0.3s;
+}
+
+.sec4 a:hover{
+    color: #a78bfa;
+}
+
+.sec4 p{
+    color: #cbd5e1;
+    margin: 5px 0;
+}
+
+.p1 ul{
+    margin: 0;
+    padding-left: 20px;
+}
+
+.p1 li{
+    color: #cbd5e1;
+    margin-bottom: 5px;
+}
+
+.bottom{
+    text-align: center;
+
+    border-top: 1px solid rgba(255,255,255,0.15);
+
+    margin-top: 15px;
+    padding-top: 10px;
+
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+    </style>
+</head>
+<body>
+<header class="home">
+    <div class="sec5">
+         <h1>CollabX</h1>
+         <p>CONNECT.COLLABORATE.CREATE.</p>
+         <img src="images\1000302600-removebg-preview.png">
+    </div>
+         <nav class="center">
+                <a href="About.html">
+                    About
+                </a>
+                <a href="Home.html">
+                    Home
+                </a>
+            </nav>
+</header>
+   <div class="credentials">
+
+    <h2>WELCOME TO CollabX</h2>
+
+    <p class="word1">Let's Unleash Your Collabing Skills</p>
+
+    <label>Email:</label>
+    <input class="login" id="email" type="email" placeholder="Enter your Email">
+
+    <label>Password:</label>
+    <input class="login" id="password" type="password" placeholder="Enter your password">
+
+    <button onclick="loginUser()">Login</button>
+
+</div>
+<p class="more">If you need to learn more about our website,just go through Our <a href="about.html"> About </a> section.</p>
+<footer class="foter">
+    <div class="cx">
+        <h2>CollabX</h2>
+        <p>CONNECT.COLLABORATE.CREATE</p>
+    </div>
+    <div class="footer-container">
+        <div class="sec4">
+            <h3>Quick Links</h3><br>
+            <a href="home.html">Home</a><br><br>
+            <a href="about.html">About</a><br><br>
+            <a href="login.html">Login</a>
+        </div>
+        <div class="sec4">
+            <h3>Connect with Us</h3><br>
+            <p>Email</p><br>
+            <p>Instagram</p><br>
+            <p>Github</p><br>
+        </div>
+        <div class="sec4 p1"><ul>
+            <p><br><li>Skill Exchange</p><br></li>
+            <p><li>Collaboration</li></p><br>
+            <p><li>Learning</li></p>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom">
+        <p>&copy;2026 CollabX.All rights Reserved.</p>
+    </div>
+</footer>
+<script src="login.js"></script>
+</body>
+</html>

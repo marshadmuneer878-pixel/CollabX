@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills | CollabX</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="skills.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Collab<span>X</span></div>
+  <nav class="main-nav">
+    <a href="home.html">Home</a>
+    <a href="collaborators.html">Collaborators</a>
+    <a href="skills.html" class="active">Skills</a>
+    <a href="campus.html">Campus Network</a>
+    <a href="about.html">About</a>
+    <a href="login.html">Login</a>
+  </nav>
+</header>
+
+<main>
+  <section class="skills-hero">
+    <div class="skills-hero-text">
+      <h1>Explore Skills</h1>
+      <p>Find skill, find teammate, or hire straight from CollabX.</p>
+    </div>
+    <button id="postSkillBtn" class="btn-primary">Post My Skill</button>
+  </section>
+
+  <section class="skills-filter">
+    <input type="text" id="skillSearch" placeholder="Search skills...">
+    <div class="filter-chips" id="filterChips">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="Design">Design</button>
+      <button class="chip" data-filter="Development">Development</button>
+      <button class="chip" data-filter="Marketing">Marketing</button>
+      <button class="chip" data-filter="Writing">Writing</button>
+    </div>
+  </section>
+
+  <section class="skills-grid" id="skillsGrid">
+    <!-- skill cards injected by skills.js -->
+  </section>
+</main>
+
+<!-- Account check modal -->
+<div class="modal-overlay" id="accountCheckModal">
+  <div class="modal-box">
+    <h2>Did you create your account?</h2>
+    <p>You need account on CollabX before posting skill.</p>
+    <div class="modal-actions">
+      <button id="accCheckYes" class="btn-primary">Yes</button>
+      <button id="accCheckNo" class="btn-secondary">No</button>
+    </div>
+    <button class="modal-close" data-close="accountCheckModal">&times;</button>
+  </div>
+</div>
+
+<!-- Create account modal -->
+<div class="modal-overlay" id="createAccountModal">
+  <div class="modal-box">
+    <h2>Create Your Account</h2>
+    <form id="createAccountForm">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit" class="btn-primary">Create Account</button>
+    </form>
+    <button class="modal-close" data-close="createAccountModal">&times;</button>
+  </div>
+</div>
+
+<!-- Post skill modal -->
+<div class="modal-overlay" id="postSkillModal">
+  <div class="modal-box modal-box-lg">
+    <h2>Post My Skill</h2>
+    <div class="post-tabs">
+      <button class="post-tab active" data-tab="code">Code</button>
+      <button class="post-tab" data-tab="text">Text</button>
+      <button class="post-tab" data-tab="link">Link</button>
+    </div>
+
+    <form id="postSkillForm">
+      <input type="text" id="skillTitle" placeholder="Skill title" required>
+      <select id="skillCategory">
+        <option value="Design">Design</option>
+        <option value="Development">Development</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Writing">Writing</option>
+      </select>
+
+      <div class="post-section" id="section-code">
+        <select id="codeLang">
+          <option>JavaScript</option>
+          <option>Python</option>
+          <option>HTML/CSS</option>
+          <option>Other</option>
+        </select>
+        <textarea id="codeInput" placeholder="Paste code snippet here..."></textarea>
+      </div>
+
+      <div class="post-section" id="section-text" style="display:none;">
+        <textarea id="textInput" placeholder="Describe your skill in text..."></textarea>
+      </div>
+
+      <div class="post-section" id="section-link" style="display:none;">
+        <input type="url" id="linkInput" placeholder="https://link-to-your-work.com">
+      </div>
+
+      <button type="submit" class="btn-primary">Publish Skill</button>
+    </form>
+    <button class="modal-close" data-close="postSkillModal">&times;</button>
+  </div>
+</div>
+
+<script src="skills.js"></script>
+</body>
+</html>

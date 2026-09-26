@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Collaborators — CollabX</title>
+
+    <link rel="stylesheet" type="text/css" href="collaborators.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="home">
+
+        <div class="sec5">
+            <div class="logo-text">
+                <h1>CollabX</h1>
+                <p>CONNECT. COLLABORATE. CREATE.</p>
+            </div>
+            <img src="images/1000302600-removebg-preview.png" alt="CollabX Logo">
+        </div>
+
+        <nav class="center">
+            <a href="home.html">Home</a>
+            <a href="collaborators.html" class="active">Collaborators</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= PAGE HERO ================= -->
+
+    <div class="collab-hero">
+        <p class="tag">COLLABX COMMUNITY</p>
+        <h2>Find Your Next <span>Collaborator</span></h2>
+        <p class="sub">
+            Browse people ready to team up. Filter by skill, check availability,
+            and send a connect request to start working together.
+        </p>
+    </div>
+
+
+    <!-- ================= SEARCH + FILTER ================= -->
+
+    <div class="filter-bar">
+
+        <div class="search-row">
+            <input type="text" id="searchInput" placeholder="Search by name or skill...">
+        </div>
+
+        <div class="chip-row" id="chipRow">
+            <div class="chip active" data-skill="all">All</div>
+            <div class="chip" data-skill="Web Development">💻 Web Development</div>
+            <div class="chip" data-skill="UI/UX Design">🎨 UI/UX Design</div>
+            <div class="chip" data-skill="Python">🐍 Python</div>
+            <div class="chip" data-skill="AI & ML">🤖 AI & ML</div>
+            <div class="chip" data-skill="Photography">📸 Photography</div>
+            <div class="chip" data-skill="Video Editing">🎬 Video Editing</div>
+            <div class="chip" data-skill="App Development">📱 App Development</div>
+            <div class="chip" data-skill="Content Writing">✍️ Content Writing</div>
+        </div>
+
+    </div>
+
+
+    <!-- ================= COLLABORATOR GRID ================= -->
+
+    <div class="collab-grid" id="collabGrid">
+        <!-- Cards are rendered by collaborators.js -->
+    </div>
+
+    <p class="no-results" id="noResults">
+        No collaborators match your search. Try a different skill or name.
+    </p>
+
+
+    <!-- ================= CONNECT CONFIRMATION POPUP ================= -->
+
+    <div id="connectPopup" class="popup">
+        <div class="popup-box">
+            <span class="close-btn" onclick="closeConnectPopup()">&times;</span>
+            <div class="icon">🤝</div>
+            <h3 id="popupName">Request Sent!</h3>
+            <p id="popupText">
+                Your connect request has been sent. They'll be notified and can
+                respond from their CollabX inbox.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="home-footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+                <h2>CollabX</h2>
+                <p>CONNECT. COLLABORATE. CREATE.</p>
+                <span>Turn your skills into meaningful collaborations.</span>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="login.html">Login</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <a href="#">📧 Email</a>
+                <a href="#">📸 Instagram</a>
+                <a href="#">💻 GitHub</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>What We Offer</h3>
+                <p>🤝 Skill Exchange</p>
+                <p>💡 Collaboration</p>
+                <p>📚 Learning</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 CollabX. All Rights Reserved.</p>
+            <p>CONNECT. COLLABORATE. CREATE.</p>
+        </div>
+
+    </footer>
+
+
+    <script src="collaborators.js"></script>
+
+</body>
+
+</html>
