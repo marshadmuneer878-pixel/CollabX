@@ -184,7 +184,7 @@ function findCollaborator() {
 }
 
 function postSkill() {
-  window.location.href = "skills.html";
+  window.location.href = "skill.html";
 }
 
 // =========================================================

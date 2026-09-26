@@ -138,6 +138,27 @@ document.getElementById("accCheckNo").addEventListener("click", () => {
 
 document.getElementById("createAccountForm").addEventListener("submit", (e) => {
   e.preventDefault();
+
+  const inputs = e.target.querySelectorAll("input");
+  const name = inputs[0].value.trim();
+  const email = inputs[1].value.trim();
+  const password = inputs[2].value;
+
+  // Same schema and localStorage keys as home.js, so this account
+  // works for login.html and everywhere else on the site too.
+  const accounts = JSON.parse(localStorage.getItem("collabxAccounts") || "[]");
+
+  const existing = accounts.find(a => a.email === email);
+  if (existing) {
+    alert("An account with this email already exists. Please log in instead.");
+    return;
+  }
+
+  const account = { name, email, password, skills: "", lookingFor: "" };
+  accounts.push(account);
+  localStorage.setItem("collabxAccounts", JSON.stringify(accounts));
+  localStorage.setItem("collabxCurrentUser", JSON.stringify({ name, email }));
+
   hasAccount = true;
   closeModal("createAccountModal");
   openModal("postSkillModal");
