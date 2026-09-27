@@ -1,5 +1,5 @@
 // ---------- MOCK DATA (API-ready shape) ----------
-let skillsData = [
+const DEFAULT_SKILLS = [
   {
     id: 1,
     title: "React Frontend Development",
@@ -49,6 +49,19 @@ let skillsData = [
     type: "code"
   }
 ];
+
+function loadSkillsData() {
+  const stored = localStorage.getItem("collabxSkills");
+  if (stored) return JSON.parse(stored);
+  localStorage.setItem("collabxSkills", JSON.stringify(DEFAULT_SKILLS));
+  return DEFAULT_SKILLS;
+}
+
+function persistSkillsData() {
+  localStorage.setItem("collabxSkills", JSON.stringify(skillsData));
+}
+
+let skillsData = loadSkillsData();
 
 let activeFilter = "all";
 let hasAccount = false; // mock account state, no backend yet
@@ -207,6 +220,7 @@ document.getElementById("postSkillForm").addEventListener("submit", (e) => {
   };
 
   skillsData.unshift(newSkill);
+  persistSkillsData();
   renderSkills();
   closeModal("postSkillModal");
   e.target.reset();

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin — CollabX</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= PASSWORD GATE ================= -->
+
+    <div id="gate">
+        <div class="gate-box">
+            <div class="icon">🔒</div>
+            <h2>Admin Access</h2>
+            <p>
+                This page is for the developer only. It reads account data
+                stored in this browser's localStorage — not a real backend.
+            </p>
+
+            <input type="password" id="gatePassword" placeholder="Enter admin password"
+                onkeydown="if(event.key === 'Enter') checkPassword()">
+
+            <button onclick="checkPassword()">Unlock</button>
+
+            <p class="gate-error" id="gateError">Incorrect password. Try again.</p>
+        </div>
+    </div>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <div id="dashboard">
+
+        <header class="admin-header">
+            <div>
+                <h1>CollabX Admin</h1>
+                <p class="sub">Account management — this browser only</p>
+            </div>
+
+            <button class="lock-btn" onclick="lockDashboard()">🔒 Lock</button>
+        </header>
+
+        <p class="local-warning">
+            ⚠️ This dashboard only shows data created on <strong>this device's browser</strong>.
+            There's no shared backend yet, so it can't see or manage data other people create
+            on their own phones or computers.
+        </p>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="accounts">Accounts</button>
+            <button class="admin-tab" data-tab="collaborators">Collaborators</button>
+            <button class="admin-tab" data-tab="skills">Skills</button>
+            <button class="admin-tab" data-tab="projects">Projects</button>
+        </div>
+
+
+        <!-- ================= ACCOUNTS TAB ================= -->
+
+        <div id="tab-accounts" class="tab-panel active">
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="num" id="statTotal">0</div>
+                    <div class="label">Total Accounts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num" id="statSkills">0</div>
+                    <div class="label">With Skills Listed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num" id="statPics">0</div>
+                    <div class="label">With Profile Pics</div>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <input type="text" id="adminSearch" placeholder="Search by name or email...">
+                <button class="danger-btn" onclick="clearAllAccounts()">Delete All Accounts</button>
+            </div>
+
+            <div class="accounts-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Skills</th>
+                            <th>Looking For</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="accountsBody"></tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!-- ================= COLLABORATORS TAB ================= -->
+
+        <div id="tab-collaborators" class="tab-panel">
+
+            <div class="toolbar">
+                <input type="text" id="collabSearch" placeholder="Search by name or skill...">
+                <button class="add-btn" onclick="openCollabModal(null)">+ Add Collaborator</button>
+            </div>
+
+            <div class="accounts-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Skills</th>
+                            <th>Available</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="collabBody"></tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!-- ================= SKILLS TAB ================= -->
+
+        <div id="tab-skills" class="tab-panel">
+
+            <div class="toolbar">
+                <input type="text" id="skillSearchAdmin" placeholder="Search by title or owner...">
+                <button class="add-btn" onclick="openSkillModal(null)">+ Add Skill</button>
+            </div>
+
+            <div class="accounts-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Owner</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="skillsBody"></tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!-- ================= PROJECTS TAB ================= -->
+
+        <div id="tab-projects" class="tab-panel">
+
+            <div class="toolbar">
+                <span></span>
+                <button class="add-btn" onclick="openProjectModal(null)">+ Add Project</button>
+            </div>
+
+            <div class="accounts-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Created By</th>
+                            <th>Collaborators</th>
+                            <th>Skills Used</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="projectsBody"></tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= EDIT ACCOUNT MODAL ================= -->
+
+    <div id="editPopup" class="popup">
+        <div class="popup-box">
+            <span class="close-btn" onclick="closeEditModal()">&times;</span>
+            <h3>Edit Account</h3>
+
+            <label>Name</label>
+            <input type="text" id="editName">
+
+            <label>Email</label>
+            <input type="email" id="editEmail">
+
+            <label>Skills</label>
+            <input type="text" id="editSkills" placeholder="Eg: Python, Web Development">
+
+            <label>Looking For</label>
+            <textarea id="editLookingFor"></textarea>
+
+            <button class="save-btn" onclick="saveEdit()">Save Changes</button>
+        </div>
+    </div>
+
+
+    <!-- ================= EDIT/ADD COLLABORATOR MODAL ================= -->
+
+    <div id="collabPopup" class="popup">
+        <div class="popup-box">
+            <span class="close-btn" onclick="closeCollabModal()">&times;</span>
+            <h3 id="collabModalTitle">Add Collaborator</h3>
+
+            <label>Name</label>
+            <input type="text" id="collabName">
+
+            <label>Role</label>
+            <input type="text" id="collabRole" placeholder="Eg: Frontend Developer">
+
+            <label>Skills (comma-separated)</label>
+            <input type="text" id="collabSkills" placeholder="Eg: Web Development, UI/UX Design">
+
+            <label>Experience</label>
+            <input type="text" id="collabExperience" placeholder="Eg: 2 yrs experience">
+
+            <label>Projects</label>
+            <input type="text" id="collabProjects" placeholder="Eg: 4 projects">
+
+            <label>Availability</label>
+            <select id="collabAvailable">
+                <option value="true">Available</option>
+                <option value="false">Busy</option>
+            </select>
+
+            <label>Bio</label>
+            <textarea id="collabBio"></textarea>
+
+            <button class="save-btn" onclick="saveCollab()">Save Collaborator</button>
+        </div>
+    </div>
+
+
+    <!-- ================= EDIT/ADD SKILL MODAL ================= -->
+
+    <div id="skillPopup" class="popup">
+        <div class="popup-box">
+            <span class="close-btn" onclick="closeSkillModal()">&times;</span>
+            <h3 id="skillModalTitle">Add Skill</h3>
+
+            <label>Title</label>
+            <input type="text" id="skillTitleAdmin">
+
+            <label>Category</label>
+            <select id="skillCategoryAdmin">
+                <option value="Design">Design</option>
+                <option value="Development">Development</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Writing">Writing</option>
+            </select>
+
+            <label>Owner</label>
+            <input type="text" id="skillOwnerAdmin">
+
+            <label>Type</label>
+            <select id="skillTypeAdmin">
+                <option value="text">Text</option>
+                <option value="code">Code</option>
+                <option value="link">Link</option>
+            </select>
+
+            <label>Description</label>
+            <textarea id="skillDescAdmin"></textarea>
+
+            <button class="save-btn" onclick="saveSkill()">Save Skill</button>
+        </div>
+    </div>
+
+
+    <!-- ================= EDIT/ADD PROJECT MODAL ================= -->
+
+    <div id="projectPopup" class="popup">
+        <div class="popup-box">
+            <span class="close-btn" onclick="closeProjectModal()">&times;</span>
+            <h3 id="projectModalTitle">Add Project</h3>
+
+            <label>Icon (emoji)</label>
+            <input type="text" id="projectIcon" placeholder="🚀">
+
+            <label>Title</label>
+            <input type="text" id="projectTitle">
+
+            <label>Created By</label>
+            <input type="text" id="projectCreatedBy">
+
+            <label>Collaborators</label>
+            <input type="text" id="projectCollaborators" placeholder="Eg: 5 people">
+
+            <label>Skills Used</label>
+            <input type="text" id="projectSkillsUsed" placeholder="Eg: Python, AI & ML">
+
+            <label>Description</label>
+            <textarea id="projectDescription"></textarea>
+
+            <label>Outcome</label>
+            <textarea id="projectOutcome"></textarea>
+
+            <label>Link (optional)</label>
+            <input type="text" id="projectLink" placeholder="#">
+
+            <button class="save-btn" onclick="saveProject()">Save Project</button>
+        </div>
+    </div>
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

@@ -188,7 +188,87 @@ function postSkill() {
 }
 
 // =========================================================
+// FEATURED PROJECTS (rendered from localStorage, editable in admin.html)
+// =========================================================
+
+const DEFAULT_PROJECTS = [
+  {
+    icon: "🤖",
+    title: "AI Chatbot",
+    description: "An intelligent chatbot designed to answer common user questions, guide visitors through a website, and provide quick support at any time. The team combined programming, AI knowledge, and interface design to turn a simple idea into a helpful digital assistant.",
+    createdBy: "Marshad",
+    collaborators: "5 people",
+    skillsUsed: "Python, AI & ML, UI/UX, Web Development",
+    outcome: "The team created a working chatbot prototype with a clean chat interface, basic question answering, and a knowledge base that can be expanded for a real business or student project.",
+    link: "#"
+  },
+  {
+    icon: "💼",
+    title: "Portfolio",
+    description: "A modern personal portfolio website built to showcase creative work, technical skills, and completed projects in one professional online space. The collaborators focused on making the site responsive, visually engaging, and easy for recruiters or clients to explore.",
+    createdBy: "Muhammed",
+    collaborators: "3 people",
+    skillsUsed: "HTML, CSS, JavaScript, UI/UX Design",
+    outcome: "The final portfolio included an introduction, skill highlights, project showcase, contact area, and responsive design that works smoothly on mobile and desktop screens.",
+    link: "#"
+  },
+  {
+    icon: "📱",
+    title: "Mobile App",
+    description: "A productivity mobile app concept created to help students organize tasks, set reminders, and track their daily goals. The project brought together people with design, development, and planning skills to shape the idea from early sketches into an app prototype.",
+    createdBy: "Imthiyaz",
+    collaborators: "6 people",
+    skillsUsed: "App Development, UI/UX, JavaScript, Project Planning",
+    outcome: "The collaboration produced a clickable mobile app prototype with task lists, reminders, goal tracking, and a simple, student-friendly interface ready for further development.",
+    link: "#"
+  }
+];
+
+function loadProjects() {
+  const stored = localStorage.getItem("collabxProjects");
+  if (stored) return JSON.parse(stored);
+  localStorage.setItem("collabxProjects", JSON.stringify(DEFAULT_PROJECTS));
+  return DEFAULT_PROJECTS;
+}
+
+function renderFeaturedProjects() {
+  const projects = loadProjects();
+  const container = document.getElementById("featuredProjects");
+  if (!container) return;
+
+  container.innerHTML = projects.map(p => `
+    <article class="featured-project-card">
+        <div class="project-icon">${p.icon || "🚀"}</div>
+        <div class="project-content">
+            <span class="project-label">FEATURED COLLABORATION</span>
+            <h3>${p.title}</h3>
+            <p class="project-description">${p.description}</p>
+            <div class="project-details">
+                <div>
+                    <span>Created by</span>
+                    <strong>${p.createdBy}</strong>
+                </div>
+                <div>
+                    <span>CollabX collaborators</span>
+                    <strong>${p.collaborators}</strong>
+                </div>
+                <div>
+                    <span>Skills used</span>
+                    <strong>${p.skillsUsed}</strong>
+                </div>
+            </div>
+            <p class="project-outcome"><b>Outcome:</b> ${p.outcome}</p>
+            <a href="${p.link || '#'}" class="see-project-btn">See Project →</a>
+        </div>
+    </article>
+  `).join("");
+}
+
+// =========================================================
 // INIT
 // =========================================================
 
-document.addEventListener("DOMContentLoaded", loadCurrentUserIntoSidebar);
+document.addEventListener("DOMContentLoaded", () => {
+  loadCurrentUserIntoSidebar();
+  renderFeaturedProjects();
+});

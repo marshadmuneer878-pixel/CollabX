@@ -1,10 +1,11 @@
 /* =========================================================
    COLLABX — COLLABORATORS DATA
-   Mock data for now. Later this should come from a backend
-   (e.g. GET /api/collaborators) instead of being hardcoded.
+   Stored in localStorage (collabxCollaborators) so the admin
+   dashboard can add/edit/delete entries. Seeded with defaults
+   on first load.
 ========================================================= */
 
-const collaborators = [
+const DEFAULT_COLLABORATORS = [
 
     {
         name: "Aisha Rahman",
@@ -88,6 +89,15 @@ const collaborators = [
     }
 
 ];
+
+function loadCollaborators() {
+    const stored = localStorage.getItem("collabxCollaborators");
+    if (stored) return JSON.parse(stored);
+    localStorage.setItem("collabxCollaborators", JSON.stringify(DEFAULT_COLLABORATORS));
+    return DEFAULT_COLLABORATORS;
+}
+
+let collaborators = loadCollaborators();
 
 
 let activeSkill = "all";
